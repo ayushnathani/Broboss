@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <style type="text/css">
+  	.checked {
+  color: orange;
+}
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  width: 100%
+  /*position the autocomplete items to be the same width as the container:*/ 
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container" >
+	
+	<div class="navbar-header" >
+		<a class="navbar-brand" href="nav.html" style="font-family: Chiller ; font-size: 30px "><b>BROBOSS</b></a><img src="G copy.png" style="width:50px"/></div>
+		<ul class="nav navbar-nav"><li><a >     	</a></li></ul>
+	<form class="navbar-form navbar-left" >
+		<div class="form-group" >
+			<input type="text" class="form-control" placeholder="Search..." style="width:500px" />
+		</div>
+
+		<button class="btn btn-default" ><span class="glyphicon glyphicon-search" ></span></button>
+	</form>
+	<ul class="nav navbar-nav navbar-right" >
+		<li><a href="#" data-toggle="modal" data-target="#modal-login1" ><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#modal-login"  ><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li></ul>
+</div>
+</nav>
+	<div class="container-fluid">
+	<ul class="breadcrumb" style="margin-top:80px">
+		<li><a href="#">Compare</a></li>
+		<li class="active"><a href="#">Compare Mobiles</a></li>
+	</ul>
+	<div class="row" style="margin-top:50px">
+		<div class="col-sm-3" id="5" ><h2 style="font-family: Chiller;font-size: 41px;color: #999966"><b>Select products to compare</b></h2>
+
+			<table class="table table-striped table-bordered" style="width:100%;margin-top:84px" id="tb">
+				<tr><td style="height:54px"></td></tr>
+				<tr><td style="height:267px"></td></tr>
+				<tr><td style="height:40px"><b>Price</b></td></tr>
+				<tr><td style="height:62px"><b>Display</b></td></tr>
+				<tr><td style="height:60px"><b>Performance</b></td></tr>
+				<tr><td style="height:60px"><b>Storage</b></td></tr>
+				<tr><td style="height:60px"><b>Camera</b></td></tr>
+				<tr><td style="height:40px"><b>Battery</b></td></tr>
+				<tr><td style="height:40px"><b>Launch Date</b></td></tr>
+				<tr><td style="height:40px"><b>Operating System</b></td></tr>
+				<tr><td style="height:40px"><b>Fingerprint Sensor</b></td></tr>
+				<tr><td><b style="height:40px">Quick Charging</b></td></tr>
+				<tr><td style="height:40px"><b>Chipset</b></td></tr>
+				<tr><td style="height:40px"><b>Graphics</b></td></tr>
+				<tr><td style="height:40px"><b>RAM</b></td></tr>
+				<tr><td style="height:40px"><b>User Rating</b></td></tr>
+				<tr><td style="height:60px"><b>WaterProof</b></td></tr>
+				<tr><td style="height:40px"><b>Screen Size</b></td></tr>
+				<tr><td style="height:40px"><b>Screen Resolution</b></td></tr>
+				<tr><td style="height:40px"><b>Display Type</b></td></tr>
+				<tr><td style="height:60px"><b>Sim Size</b></td></tr>
+				<tr><td style="height:40px"><b>Volte</b></td></tr>
+				<tr><td style="height:40px"><b>Wifi</b></td></tr>
+				<tr><td style="height:40px"><b>NFC</b></td></tr>
+			</table>
+
+
+		</div>
+
+		<div class="col-sm-3" id="4" >
+			<div class="autocomplete" style="width:100%" >
+			<input type="text" class="form-control" id="myInput" name="myCountry" value="Redmi note 7 Pro" style="height:50px;border-color:  #5c5c3d;color:  #5c5c3d" placeholder="Search Mobile To Add...">
+		</div>
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var countries = ["Apple Iphone 8","Apple Iphone XS Max","Iphone X","Iphone XR","Iphone XS","Samsung Galaxy S10","Samsung Galaxy A50","Samsung Galaxy Note 9","Micromax Canvas 5","Huawei P20 lite","Huawei P30 pro","Redmi Note 7 Pro","Realme 2","Realme 3","Realme 2 pro","Mi 6","Mi note 6","Redmi 5","Redmi 6 pro","Xiaomi Mi 8","Xiaomi X5","Oppo f9","Oppo f11","Oppo f3","Oppo f7 ","Vivo V15 Pro","Vivo V3","Poco F1","Lenovo K5","Blackberry Evolve","Blackberry Z6","Nokia 6 ","Nokia 7.1 plus","Nokia 8.1","Apple Iphone 8","Apple iphone 5s","Iphone 4","Iphone 4s","Iphone 7S","Samsung Galaxy S8","Samsung Galaxy Note 8","Micromax Canvas 4","Huawei P20 ","Huawei p20 pro","Realme 2 pro","Realme C1","Realme 3 pro","Mi 5","Mi note 4","Redmi 5a","Redmi 5 pro","Xiaomi Mi 6","Xiaomi X3","Oppo f5","Oppo f11 pro","Oppo f3 pro","oppo f7 pro","Vivo V7","Vivo V5","Poco F1","Lenovo K8","Blackberry K1" ,"Blackberry Z2","Nokia 6.1 ","Nokia 5.1 plus","Nokia 8.1 plus"];
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput"), countries);
+
+	
+</script>
+
+
+			<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb1">
+				<tr><td><h3><center>Samsung Galaxy S10</center></h3></td></tr>
+				<tr><td><img src="ts2.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 66,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.1 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3400 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Samsung Exynos 9 Octa 9820</font></center></td></tr>
+				<tr><td><center><font size="3">Mali-G76 MP12</font></center></td></tr>
+				<tr><td><center><font size="3">8 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Water resistant (up to 30 minutes in a depth of 1.5 meter), IP68</font></center></td></tr>
+				<tr><td><center><font size="3">6.1 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+			<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb2">
+				<tr><td><h3><center>Redmi Note 7 Pro</center></h3></td></tr>
+				<tr><td><img src="lm1.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 18,599</font></center></td></tr>
+				<tr><td><center><font size="3">6.3 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Hexa Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">64 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">48MP+ 5MP (Primary)<br>13 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">4000 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 13, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Qualcomm Snapdragon 675</font></center></td></tr>
+				<tr><td><center><font size="3">Adreno 612</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.3 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb3">
+				<tr><td><h3><center>Apple Iphone XS Max</center></h3></td></tr>
+				<tr><td><img src="ts5.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 144,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.5 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">512 GB<br>Non Expandable</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP +(Primary)<br>7 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3174 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">September 28, 2018 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">IOS v12.0/font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Apple A12 bionic</font></center></td></tr>
+				<tr><td><center><font size="3">Apple GPU (four-core graphics)</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Water resistant (up to 30 minutes in a depth of 1.5 meter), IP68</font></center></td></tr>
+				<tr><td><center><font size="3">6.5 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb4">
+				<tr><td><h3><center>Vivo V15 Pro</center></h3></td></tr>
+				<tr><td><img src="lm3.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 28,300</font></center></td></tr>
+				<tr><td><center><font size="3">6.39 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Hexa Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3700 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Qualcomm Snapdragon 675</font></center></td></tr>
+				<tr><td><center><font size="3">Adreno 612</font></center></td></tr>
+				<tr><td><center><font size="3">6 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.39 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb5">
+				<tr><td><h3><center>Samsung Galaxy A50</center></h3></td></tr>
+				<tr><td><img src="lm4.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 19,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.4 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3400 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Samsung Exynos 9 Octa 9820</font></center></td></tr>
+				<tr><td><center><font size="3">Mali-G76 MP12</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.4 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+		</div>
+		
+		<div class="col-sm-3" id="6">
+
+			<div class="autocomplete" style="width:100%" >
+			<input type="text" class="form-control" id="myInput1" name="myCountry" style="height:50px;border-color:  #5c5c3d;color:  #5c5c3d" placeholder="Search Mobile To Add...">
+			</div>
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var countries = ["Apple Iphone 8","Apple Iphone XS Max","Iphone X","Iphone XR","Iphone XS","Samsung Galaxy S10","Samsung Galaxy A50","Samsung Galaxy Note 9","Micromax Canvas 5","Huawei P20 lite","Huawei P30 pro","Redmi Note 7 Pro","Realme 2","Realme 3","Realme 2 pro","Mi 6","Mi note 6","Redmi 5","Redmi 6 pro","Xiaomi Mi 8","Xiaomi X5","Oppo f9","Oppo f11","Oppo f3","Oppo f7 ","Vivo V15 Pro","Vivo V3","Poco F1","Lenovo K5","Blackberry Evolve","Blackberry Z6","Nokia 6 ","Nokia 7.1 plus","Nokia 8.1","Apple Iphone 7","Apple iphone 5s","Iphone 4","Iphone 4s","Iphone 7S","Samsung Galaxy S8","Samsung Galaxy Note 8","Micromax Canvas 4","Huawei P20 ","Huawei p20 pro","Realme 2 pro","Realme C1","Realme 3 pro","Mi 5","Mi note 4","Redmi 5a","Redmi 5 pro","Xiaomi Mi 6","Xiaomi X3","Oppo f5","Oppo f11 pro","Oppo f3 pro","oppo f7 pro","Vivo V7","Vivo V5","Poco F1","Lenovo K8","Blackberry K1" ,"Blackberry Z2","Nokia 6.1 ","Nokia 5.1 plus","Nokia 8.1 plus"];
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput1"), countries);
+
+	
+</script>
+
+			<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb6">
+				<tr><td><h3><center>Samsung Galaxy S10</center></h3></td></tr>
+				<tr><td><img src="ts2.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 66,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.1 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3400 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Samsung Exynos 9 Octa 9820</font></center></td></tr>
+				<tr><td><center><font size="3">Mali-G76 MP12</font></center></td></tr>
+				<tr><td><center><font size="3">8 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Water resistant (up to 30 minutes in a depth of 1.5 meter), IP68</font></center></td></tr>
+				<tr><td><center><font size="3">6.1 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb7">
+				<tr><td><h3><center>Redmi Note 7 Pro</center></h3></td></tr>
+				<tr><td><img src="lm1.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 18,599</font></center></td></tr>
+				<tr><td><center><font size="3">6.3 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Hexa Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">64 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">48MP+ 5MP (Primary)<br>13 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">4000 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 13, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Qualcomm Snapdragon 675</font></center></td></tr>
+				<tr><td><center><font size="3">Adreno 612</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.3 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb8">
+				<tr><td><h3><center>Apple Iphone XS Max</center></h3></td></tr>
+				<tr><td><img src="ts5.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 144,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.5 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">512 GB<br>Non Expandable</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP +(Primary)<br>7 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3174 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">September 28, 2018 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">IOS v12.0/font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Apple A12 bionic</font></center></td></tr>
+				<tr><td><center><font size="3">Apple GPU (four-core graphics)</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Water resistant (up to 30 minutes in a depth of 1.5 meter), IP68</font></center></td></tr>
+				<tr><td><center><font size="3">6.5 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb9">
+				<tr><td><h3><center>Vivo V15 Pro</center></h3></td></tr>
+				<tr><td><img src="lm3.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 28,300</font></center></td></tr>
+				<tr><td><center><font size="3">6.39 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Hexa Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3700 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Qualcomm Snapdragon 675</font></center></td></tr>
+				<tr><td><center><font size="3">Adreno 612</font></center></td></tr>
+				<tr><td><center><font size="3">6 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.39 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+
+
+				<table class="table table-striped table-bordered" style="width:100%;margin-top:80px" cellspacing="100px" id="tb10">
+				<tr><td><h3><center>Samsung Galaxy A50</center></h3></td></tr>
+				<tr><td><img src="lm4.jpeg" style="height:30%;margin-left:100px"></td></tr>
+				<tr><td><center><font size="3">Rs. 19,990</font></center></td></tr>
+				<tr><td><center><font size="3">6.4 inch (15.49 cm)<br>1440x3040 px, 551 PPI</font></center></td></tr>
+				<tr><td><center><font size="3">Dual + Dual + Quad Core<br>2.73 GHz + 2.31 GHz + 1.95 GHz, 8 GB RAM</font></center></td></tr>
+				<tr><td><center><font size="3">128 GB<br>512 GB (Expandable)</font></center></td></tr>
+				<tr><td><center><font size="3">12 MP + 12 MP + 16 MP (Primary)<br>10 MP(Front)</font></center></td></tr>
+				<tr><td><center><font size="3">3400 mAh</font></center></td></tr>
+				<tr><td><center><font size="3">March 8, 2019 (Official)</font></center></td></tr>
+				<tr><td><center><font size="3">Android v9.0 (Pie)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Fast</font></center></td></tr>
+				<tr><td><center><font size="3">Samsung Exynos 9 Octa 9820</font></center></td></tr>
+				<tr><td><center><font size="3">Mali-G76 MP12</font></center></td></tr>
+				<tr><td><center><font size="3">4 GB</font></center></td></tr>
+				<tr><td><center><font size="3"><span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-remove"></i></font></center></td></tr>
+				<tr><td><center><font size="3">6.4 " (15.49 cm)</font></center></td></tr>
+				<tr><td><center><font size="3">1440 x 3040 pixels</font></center></td></tr>
+				<tr><td><center><font size="3">Dynamic AMOLED</font></center></td></tr>
+				<tr><td><center><font size="3">SIM1: Nano<br>SIM2: Nano (Hybrid)</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i>Wi-Fi 802.11, a/ac/ax/b/g/n/n 5GHz, MIMO</font></center></td></tr>
+				<tr><td><center><font size="3"><i class="fa fa-check"></i></font></center></td></tr>
+				</table>
+
+		</div>
+		<div class="col-sm-3" >
+			<input type="button" class="btn  form-control" value="Compare" id="3" style="height:50px;background-color: #999966;color: white ">
+			<hr>
+			<img src="add1.png" style="width:90%" ><hr><img src="add2.png" ><hr><img src="add3.png" style="width: 90%">
+
+		</div>
+
+	
+	<script type="text/javascript">
+			
+		$(document).ready(function(){
+			$("#tb").show();
+			$("#tb1").hide();
+			$("#tb2").show();
+			$("#tb3").hide();
+			$("#tb4").hide();
+			$("#tb5").hide();
+			$("#tb6").hide();
+			$("#tb7").hide();
+			$("#tb8").hide();
+			$("#tb9").hide();
+			$("#tb10").hide();
+
+			$("#3").click(function(){
+				var a=$("#myInput").val();
+				var b=$("#myInput1").val();
+				if(a=="Samsung Galaxy S10"){
+					$("#tb").show();
+					$("#tb1").show();
+					$("#tb2").hide();
+					$("#tb3").hide();
+					$("#tb4").hide();
+					$("#tb5").hide();
+				}
+				if(a=="Redmi Note 7 Pro"){
+					$("#tb").show();
+					$("#tb2").show();
+					$("#tb1").hide();
+					$("#tb3").hide();
+					$("#tb4").hide();
+					$("#tb5").hide();
+
+				}
+				if(a=="Apple Iphone XS Max"){
+					$("#tb").show();
+					$("#tb3").show();
+					$("#tb1").hide();
+					$("#tb2").hide();
+					$("#tb4").hide();
+					$("#tb5").hide();
+
+				}
+				if(a=="Vivo V15 Pro"){
+					$("#tb").show();
+					$("#tb4").show();
+					$("#tb1").hide();
+					$("#tb3").hide();
+					$("#tb2").hide();
+					$("#tb5").hide();
+
+				}
+				if(a=="Samsung Galaxy A50"){
+					$("#tb").show();
+					$("#tb5").show();
+					$("#tb1").hide();
+					$("#tb3").hide();
+					$("#tb4").hide();
+					$("#tb2").hide();
+
+				}
+
+
+				if(b=="Samsung Galaxy S10"){
+					$("#tb").show();
+					$("#tb6").show();
+					$("#tb7").hide();
+					$("#tb8").hide();
+					$("#tb9").hide();
+					$("#tb10").hide();
+				}
+				if(b=="Redmi Note 7 Pro"){
+					$("#tb").show();
+					$("#tb7").show();
+					$("#tb6").hide();
+					$("#tb8").hide();
+					$("#tb9").hide();
+					$("#tb10").hide();
+
+				}
+				if(b=="Apple Iphone XS Max"){
+					$("#tb").show();
+					$("#tb8").show();
+					$("#tb6").hide();
+					$("#tb7").hide();
+					$("#tb9").hide();
+					$("#tb10").hide();
+
+				}
+				if(b=="Vivo V15 Pro"){
+					$("#tb").show();
+					$("#tb9").show();
+					$("#tb6").hide();
+					$("#tb8").hide();
+					$("#tb7").hide();
+					$("#tb10").hide();
+
+				}
+				if(b=="Samsung Galaxy A50"){
+					$("#tb").show();
+					$("#tb10").show();
+					$("#tb6").hide();
+					$("#tb8").hide();
+					$("#tb9").hide();
+					$("#tb7").hide();
+
+				}
+			});
+
+
+		});
+			
+		
+		
+		
+		
+	</script>
+</div>
+<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Broboss is a gadget-research website that helps user to choose best device for himself...</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>broboss@broboss.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							<span class="copyright">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+
+
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>	
+</body></html>
+

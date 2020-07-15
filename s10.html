@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+	<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-sale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<head>
+<style>
+	td{
+		text-align: left;
+		width: 50%;
+	}
+</style>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+ 		<!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+ 		<!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <style type="text/css">
+     
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+.checked {
+  color: orange;
+}
+.fa-star{
+	width:30px;
+	font-size: 20px;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+  </style>
+
+    </head>
+    	<body style="margin-left: 60px;margin-right: 60px" >
+    		<div id="my" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" data-dismiss="modal">&times</button>
+<h3 class="modal-title">S10 Plus</h3>
+</div>
+<div class="modal-body"><p>TEXT</p></div>
+<img class="img img-thumbnail"  style="height: 300px;width: 300px;" src="s103.jpg">
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container" >
+	
+	<div class="navbar-header" >
+		<a class="navbar-brand" href="nav.html" style="font-family: Chiller ; font-size: 30px "><b>BROBOSS</b></a><img src="G copy.png" style="width:50px"/></div>
+		<ul class="nav navbar-nav"><li><a >     	</a></li></ul>
+	<form class="navbar-form navbar-left" >
+		<div class="form-group" >
+			<input type="text" class="form-control" placeholder="Search..." style="width:500px"/>
+		</div>
+
+		<button class="btn btn-default" ><span class="glyphicon glyphicon-search" ></span></button>
+	</form>
+	<ul class="nav navbar-nav navbar-right" >
+		<li><a href="#" ><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+		<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li></ul>
+</div>
+</nav>
+
+
+
+
+<ul class="breadcrumb" style="margin-top: 70px;">
+<li><a href="nav.html">home</a></li>
+<li><a href="product.html">products</a></li>
+<li><a href="s10.html">S10 Plus</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+<div class="rows" style="margin-top:20px; height: 550px; width: 1400px;">
+	<div class="col-sm-2">
+		<img class="img img-thumbnail"  style="height: 167px;width: 167px;" src="s10.jpg"   data-toggle="modal" data-target="#my"><br>
+		<img class="img img-thumbnail"  style="height: 167px;width: 167px;" src="s102.jpg"   data-toggle="modal" data-target="#my"><br>
+		<img class="img img-thumbnail"  style="height: 167px;width: 167px;" src="s103.jpg"   data-toggle="modal" data-target="#my">
+	</div>
+	<div class="col-sm-6">
+		<div id="m" class="carousel slide" data-ride="carousel">
+	<ol class="carousel-indicators">
+	<li data-target="#m" data-slide-to="0" class="active"></li>
+	<li data-target="#m" data-slide-to="1"></li>
+	<li data-target="#m" data-slide-to="2"></li>
+	</ol>
+	<div class="carousel-inner">
+	<div class="item active"><img class="img img-thumbnail"  style="height: 500px;width: 1600px;" src="s10.jpg"></div>
+	<div class="item"><img class="img img-thumbnail" style="height: 500px;width: 1600px;" src="s102.jpg"></div>	
+	<div class="item"><img class="img img-thumbnail" style="height: 500px;width: 1600px;" src="s103.jpg"></div>
+	<a class="left carousel-control" href="#m" data-slide="prev">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+	</a>
+	<a class="right carousel-control" href="#m" data-slide="next">
+	<span class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+		</div>
+	</div>
+	
+	</div>	
+
+
+
+
+
+
+	<div class="col-sm-4">
+		<div class="header"><b style="font-size:20px; ">Samsung Galaxy S10 Plus (Ceramic Black, 512 GB)  (8 GB RAM)</b></div>
+		<div class="body" style="font-size:15px; " ><b style="font-size:30px; ">Rs 91,900</b><br>
+			<span class="glyphicon glyphicon-tag" style="height: 10px; width: 12px;color: green;"></span>&nbsp &nbsp <b>Special PriceExtra ₹7100</b> discount(price inclusive of discount)<br>
+			<span class="glyphicon glyphicon-tag" style="height: 10px; width: 12px;color: green;"></span>&nbsp &nbsp <b>Bank Offer₹6,000 </b>Cashback on Transaction made using HDFC Debit(EMI only) and Credit Cards<br>
+			<span class="glyphicon glyphicon-tag" style="height: 10px; width: 12px;color: green;"></span>&nbsp &nbsp <b>Partner Offer</b> Get Samsung Galaxy Buds at just ₹4,999*........<br>
+			<span class="glyphicon glyphicon-calendar" style="height: 10px; width: 12px;color: green;"></span>&nbsp &nbsp <b>No cost EMI ₹10,211/month.</b> Standard EMI also available
+		</div><br>
+		<h3><span class="glyphicon glyphicon-shopping-cart">  </span>  Buy Now...</h3><br>
+		<center><a href="https://www.amazon.in/Samsung-Galaxy-Storage-Additional-Exchange/dp/B07KXBVLRJ/ref=sr_1_2_sspa?keywords=samsung+Galaxy+s10&qid=1557204484&s=gateway&sr=8-2-spons&psc=1"><img src="buy.png" ></a></center><br>
+		<center><a href="#"><img src="buy1.png" ></a></center><br>
+		<center><a href="#"><img src="buy2.png" ></a></center><br>
+
+	
+
+	</div>
+</div>
+
+
+				
+			<button class="btn " style="width: 100%;height: 40px;background-color: #333 ;color: white;text-align: left" data-toggle="collapse" data-target="#1"><b>Description</b>                                                                           <span class="caret"></span></button></button>
+			<br>
+				<div id="1" class="collapse" style="margin: 100px;">
+					<div class="media">
+	<div class="media-left"><img   style="height: 167px;width: 167px;" src="s102.jpg"></div>
+	<div class="media media-body" style=" border:1px solid gray;font-size: 15px;padding: 2px;" >
+		<b>Product Description</b>
+<p>Get ready to explore the next generation of powerful computing and mobile photography with the Samsung Galaxy S10 Plus. It comes with an Intelligent Camera that automatically optimizes its settings to give you picture-perfect photos. That's not all, the Samsung S10 Plus has the Infinity-O Display and a seamless design that make this smartphone a true masterpiece.</p>
+	</div>
+</div>
+<div class="media">
+	<div class="media-left"><img   style="height: 167px;width: 167px;" src="s10.jpg"></div>
+		<div class="media-body" style=" border:1px solid gray;font-size: 15px;padding: 2px;">	
+		<b>No Notch, No Distractions - Design</b>
+<p>The Samsung S10 Plus is designed to give you a smartphone experience like never before. How? It has no notch and no distractions, which make it a smartphone worth showing off. Its Precise Laser Cutting, On-screen Security, and its Dynamic AMOLED screen ensure that this smartphone is easy on your eyes while also enhancing your user experience.</p>
+		</div>
+</div>
+<div class="media">
+	<div class="media-left"><img   style="height: 167px;width: 167px;" src="s103.jpg"></div>
+<div class="media-body" style=" border:1px solid gray;font-size: 15px;padding: 2px;">	
+		<b>Infinity-O Display</b>
+<p>To ensure an interruption-free experience, the Samsung S10 Plus comes with the Infinity-O Display.</p>
+		</div>
+</div>
+
+</div>
+			<button class="btn" style="width: 100%;height: 40px;text-align: left;background-color: #333;color:white" data-toggle="collapse" data-target="#2"><b>Specifications</b>                                                 <span class="caret"></span></button>
+		
+
+
+<div id="2" class="collapse" style="margin: 100px;">
+	<div class="container" >
+		<div class="panel">
+			<span class="panel-heading" style="font-size: 30px"><b>Specifications</b></span>
+			<div class="panel-content">
+				<span class="panel-title">General</span>
+				<table class="table table-striped">
+					<tr>
+						<td style="color:gray">In The Box</td>
+						<td>Handset (Non-removable Battery Included), Earphones, Travel Adapter, USB Cable, Ejection Pin, User Manual</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Model Number</td>
+						<td>SM-G975FZKDINS</td>
+					</tr>
+					<tr>
+						<td style="color:gray">In The Box</td>
+						<td>Handset (Non-removable Battery Included), Earphones, Travel Adapter, USB Cable, Ejection Pin, User Manual</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Model Name</td>
+						<td>Galaxy S10 Plus</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Color</td>
+						<td>Prism Black</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Browse Type</td>
+						<td>Smartphones</td>
+					</tr><tr>
+						<td style="color:gray">Hybrid Sim Slot</td>
+						<td>Yes</td>
+					</tr><tr>
+						<td style="color:gray">Touchscreen</td>
+						<td>Yes</td>
+					</tr>
+				</table>
+				<span class="panel-title">Display Features</span>
+				<table class="table table-striped">
+					<tr>
+						<td style="color:gray">Display Size</td>
+						<td>16.26 cm (6.4 inch)</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Resolution</td>
+						<td>3040 x 1440 pixel</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Resolution-type</td>
+						<td>Quad HD+</td>
+					</tr>
+					<tr>
+						<td style="color:gray">GPU</td>
+						<td>Mali-G76 MP12</td>
+					</tr>
+				</table>
+				<span class="panel-title">Os & Processor Features</span>
+				<table class="table table-striped">
+					<tr>
+						<td style="color:gray">Os & Processor Features</td>
+						<td>Android Pie 9.0</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Processor type</td>
+						<td>Exynos 9 9820</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Processor core</td>
+						<td>Octa Core</td>
+					</tr>
+					<tr>
+						<td style="color:gray">Primary clock speed</td>
+						<td>2.2 GHz</td>
+					</tr>
+				</table>
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<hr>
+<div class="container-fluid" id="cf">
+<h2>Ratings & Reviews</h2>
+<br>
+<Div class="row" >
+	<div class="col-sm-4" >
+<h3>Rate Product</h3></div>
+<div class="col-sm-4">
+<fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+</fieldset></div>
+ <div class="col-sm-4"></div>
+</Div>
+<br>
+<div class="row">
+	<div class="col-sm-4" >
+		<h3>Enter your Email</h3>
+	</div>
+	<div class="col-sm-8">
+		<input type="email" id="em" class="form-control" />
+	</div>
+</div><br>
+<div class="row" >
+	<div class="col-sm-4" >
+		<h3>Write a review</h3></div>
+		<div class="col-sm-8" >
+<textarea class="form-control" id="133" ></textarea></div>
+</div>
+<button class="btn btn-danger" id="sub" >Submit</button>
+<br>
+<div id="00"></div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+
+    $('.rating input').click(function () {
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      function(){
+        var userRating = this.value;
+        
+         if(userRating=="1")
+    {
+        $("#sub").click(function(){
+        	b=$("#133").val();
+        	c=$("#em").val();
+            $("#00").append('<hr><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br><h5>'+b+'</h5><p>'+c+'</p>');
+           
+        });
+ 
+    }
+          if(userRating=="2")
+    {
+        $("#sub").click(function(){
+        	b=$("#133").val();
+        	c=$("#em").val();
+            $("#00").append('<hr><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br><h5>'+b+'</h5><p>'+c+'</p>');
+           
+           
+        });
+        
+    }
+          if(userRating=="3")
+    {
+        $("#sub").click(function(){
+        	b=$("#133").val();
+        	c=$("#em").val();
+            $("#00").append('<hr><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br><h5>'+b+'</h5><p>'+c+'</p>');
+           
+           
+        });
+        
+    }
+          if(userRating=="4")
+    {
+        $("#sub").click(function(){
+        	b=$("#133").val();
+        	c=$("#em").val();
+            $("#00").append('<hr><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><br><h5>'+b+'</h5><p>'+c+'</p>');
+          
+          
+        });
+        
+    }
+          if(userRating=="5")
+    {
+        $("#sub").click(function(){
+        	b=$("#133").val();
+        	c=$("#em").val();
+            $("#00").append('<hr><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><br><h5>'+b+'</h5><p>'+c+'</p>');
+
+           
+        });
+        
+    }
+
+
+    }); 
+   
+
+});
+</script>
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Broboss is a gadget-research website that helps user to choose best device for himself..</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>broboss@broboss.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/jquery.zoom.min.js"></script>
+		<script src="js/main.js"></script>
+
+<script>
+	$("#rev").click(function(){
+		alert("Review Submitted");
+	});
+</script>
+
+	</body>

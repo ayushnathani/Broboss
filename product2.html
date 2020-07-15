@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+	<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-sale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<head>
+<style>
+	td{
+		text-align: left;
+		width: 50%;
+	}
+	.chat-popup {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container  {
+  
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Electro - HTML Ecommerce Template</title>
+
+ 		<!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+ 		<!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    </head>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container" >
+	
+	<div class="navbar-header" >
+		<a class="navbar-brand" href="nav.html" style="font-family: Chiller ; font-size: 30px "><b>BROBOSS</b></a><img src="G copy.png" style="width:50px"/></div>
+		<ul class="nav navbar-nav"><li><a >     	</a></li></ul>
+	<form class="navbar-form navbar-left" >
+		<div class="form-group" >
+			<input type="text" class="form-control" placeholder="Search..." style="width:500px"/>
+		</div>
+
+		<button class="btn btn-default" ><span class="glyphicon glyphicon-search" ></span></button>
+	</form>
+	<ul class="nav navbar-nav navbar-right" >
+		<li><a href="#" ><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+		<li><a href="#" ><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li></ul>
+</div>
+</nav>
+
+<div class="container-fluid">
+
+<ul class="breadcrumb" style="margin-top: 70px;">
+<li><a href="nav.html">Home</a></li>
+<li><a href="product.html">Mobiles</a></li>
+<li><a href="product2.html">Mobiles(2)</a></li>
+</ul>
+
+
+<div class="row" >
+	<div class="col-sm-2" class="img-thumbnail" style="background-color: #e6ffe6">
+		<b style="font-size: 20px;">Filters</b><hr>
+		<span style="font-size: 15px;color: #333;">CATAGORIES</span><br>
+		<span style="font-size: 13px;color: gray;"> < Mobiles & Accessories</span><hr>
+		<b style="font-size: 15px">  Mobiles </b><br>
+		<input type="checkbox" /><img src="G copy.png" class="img-rouunded" style="height: 50px;width: 35px">&nbsp Assured<hr>
+		<b style="font-size: 20px">RAM</b><br>
+		<input type="checkbox" />&nbsp 6 & Above<br>
+		<input type="checkbox" />&nbsp 4 - 6<br>
+		<input type="checkbox" />&nbsp 2 - 4<br>
+		<input type="checkbox" />&nbsp 1 <br>
+		<input type="checkbox" />&nbsp 512 mb<br>
+		<input type="checkbox" />&nbsp Less than 512 mb<br><hr>
+		<b style="font-size: 20px">  BRAND </b><br>
+		<input type="checkbox" />&nbsp Samsung<br>
+		<input type="checkbox" />&nbsp Apple<br>
+		<input type="checkbox" />&nbsp HTC<br>
+		<input type="checkbox" />&nbsp Honour<br>
+		<input type="checkbox" />&nbsp Red Mi<br>
+		<input type="checkbox" />&nbsp Oppo<br>
+		<input type="checkbox" />&nbsp Motorola<br>
+		<input type="checkbox" />&nbsp Huawie<br>
+		<input type="checkbox" />&nbsp Vivo<br><hr>
+		<b style="font-size: 20px">  Customer Ratings </b><br>		
+		<input type="checkbox" />&nbsp 4<span class="fa fa-star"></span> & Above<br>
+		<input type="checkbox" />&nbsp 3<span class="fa fa-star"></span> & Above<br>
+		<input type="checkbox" />&nbsp 2<span class="fa fa-star"></span> & Above<br>
+		<input type="checkbox" />&nbsp 1<span class="fa fa-star"></span> & Above<hr>
+		<b style="font-size: 15px;color: #333;" data-toggle="collapse" data-target="#c1">Internal Storage</b><span class="caret"></span>
+		<div id="c1" class="collapse">
+			<input type="checkbox" />&nbsp 256 gb & Above<br>
+			<input type="checkbox" />&nbsp 128 gb<br>
+			<input type="checkbox" />&nbsp 64 gb<br>
+			<input type="checkbox" />&nbsp 32 gb <br>
+			<input type="checkbox" />&nbsp less than 16 gb<br>
+		</div>	<hr>
+		<b style="font-size: 15px;color: #333;" data-toggle="collapse" data-target="#c2">Operating System</b><span class="caret"></span>
+		<div id="c2" class="collapse">
+			<input type="checkbox" />&nbsp Android<br>
+			<input type="checkbox" />&nbsp IOS<br>
+		</div>	<hr>
+		<b style="font-size: 15px;color: #333;" data-toggle="collapse" data-target="#c3">Screen Size</b><span class="caret"></span>
+		<div id="c3" class="collapse">
+			<input type="checkbox" />&nbsp 6 Inches and Above<br>
+			<input type="checkbox" />&nbsp 5 - 6 Inches<br>
+			<input type="checkbox" />&nbsp 4 - 5 Inches<br>
+			<input type="checkbox" />&nbsp 3 - 4 Inches<br>
+		</div>	<hr>
+<b style="font-size: 15px;color: #333;" data-toggle="collapse" data-target="#c4">Sim Type</b><span class="caret"></span>
+		<div id="c4" class="collapse">
+			<input type="checkbox" />&nbsp Duel Sim<br>
+			<input type="checkbox" />&nbsp Single Sim<br>
+		</div>	<hr>
+				
+	</div>
+	<div class="col-sm-10">
+		&nbsp&nbsp&nbsp&nbsp<span style="color: #333;font-size: 20px;font-family: arial">Sort By</span>
+<ul class="nav nav-pills">
+	<li><a href="#">Price(low to high)</a></li>
+	<li><a href="#">Price(high to low)</a></li>
+	<li><a href="#">Popularity</a></li>
+	<li><a href="#">Rating</a></li>
+</ul>
+<hr>
+
+<div class="row">
+	<div class="col-sm-2"><img src="s8.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy S8(Black 64gb)</a><br>
+		<button class="btn btn-success">4.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,594 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>12 mp+2mp</li>
+			<li>4000 mAh Li-polymer battery</li>
+			<li>snapdragon 660
+
+			<li>brand warranty of 1 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 38,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="s9.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy S9</a><br>
+		<button class="btn btn-success">4.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 41,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="s10e.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung S10 e</a><br>
+		<button class="btn btn-success">4.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 52,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="s.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung S10</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 63,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="s.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy S10 Plus</a><br>
+		<button class="btn btn-success">4.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 75,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="on.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung On next</a><br>
+		<button class="btn btn-success">1.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 12,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="a20.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy A20</a><br>
+		<button class="btn btn-success">4.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 24,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="a30.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy A30</a><br>
+		<button class="btn btn-success">2.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 27,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="j6.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy J6</a><br>
+		<button class="btn btn-success">3.5 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 8,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="j2.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Samsung Galaxy J2</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="sam s10.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 7,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="xr.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Apple Iphone X R</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="ip xs.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 71,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="6s.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Apple Iphone 6s</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="ip xs.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 20,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="7.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Apple Iphone 7</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;"><a href="ip xs.html">Add To Compare</a></button>
+		<br><span style="font-size: 30px;color: #333;">Rs 34,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="key2.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Blackberry Key 2</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 40,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="evolve.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Blackberry Evolve</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 38,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="3.1.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Nokia 3.1</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 7,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="5.1.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Nokia 5.1 plus</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 12,999</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="6.1.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Nokia 6.1 Plus</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 16,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+<div class="row">
+	<div class="col-sm-2"><img src="poco.jpeg" class="img img-thumbnail" style="width: 130px;height: 250px;"></div>
+	<div class="col-sm-8">
+		<a >Poco F1 Plus</a><br>
+		<button class="btn btn-success">4 <span class="fa fa-star"></span></button><span style="color: gray;font-size:20px;">   21,534 Ratings and reviews</span><br><br>
+		<ul style="color: black;font-size: 15px;word-spacing: :30px;">
+			<li>3 gb ram,32 gb ROM</li>
+			<li>14 mp+2mp</li>
+			<li>4300 mAh Li-polymer battery</li>
+			<li>snapdragon 640 processor</li>
+			<li>brand warranty of 2 year.</li>
+		</ul>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-warning" style="margin-top: 50px;">Add To Compare</button>
+		<br><span style="font-size: 30px;color: #333;">Rs 20,000</span>
+	</div>
+</div>
+<hr style="color: black;">
+
+
+</div>
+
+<hr style="color: black;">
+<ul class="pager">
+<li ><a href="product.html">prev</a></li>
+<li class="disabled" ><a href="product2.html" >next</a></li>
+</ul>
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Broboss is a gadget-research website that helps user to choose best device for himself..</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>broboss@broboss.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+
+		<div class="chat-popup" id="myForm" style="border-color: brown">
+  <form  class="form-container">
+    <center><h3>Compare Mobiles</h3></center>
+	<input type="text" placeholder="Enter first Mobile"  class="form-control" id="1">
+    <br>
+    	<input type="text" placeholder="Enter first Mobile" class="form-control" id="2"><br>
+    <a href="#" class="form-control btn btn-warning" value="Compare" style="margin-bottom: 6px" id="3" >Compare</a>
+    
+  </form>
+
+  <script type="text/javascript">
+  	$("#3").click(function(){
+  		a=$("#1").val();
+  		b=$("#2").val();
+  		if(a=="Samsung Galaxy S10"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10.html");
+  			$("#1").val("");
+  		}
+  		if(a=="Apple Iphone XS Max"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/ip%20xs.html");
+  			$("#1").val("");
+  		}
+  		if(a=="Redmi Note 7 Pro"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/red%20n7.html");
+  			$("#1").val("");
+  		}
+  		if(a=="Vivo V15 Pro"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/vivo%20v15.html");
+  			$("#1").val("");
+  		}
+  		if(a=="Samsung Galaxy A50"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20a50.html");
+  			$("#1").val("");
+  		}
+  		if(a=="Samsung Galaxy S10"&& b=="Apple Iphone XS Max" ){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20ipxs.html");
+  			$("#1").val("");
+  			$("#2").val("");
+
+  		}
+  		if( b=="Samsung Galaxy S10" && a=="Apple Iphone XS Max"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20ipxs.html");
+  			$("#1").val("");
+  			$("#2").val("");
+
+  		}	
+  		
+  		if(a=="Samsung Galaxy S10"&& b=="Redmi Note 7 Pro" ){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20rn7.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+  		if(b=="Samsung Galaxy S10"&&a=="Redmi Note 7 Pro"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20rn7.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+  		if(a=="Samsung Galaxy S10"&& b=="Vivo V15 Pro"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20vivov15.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+  		if(b=="Samsung Galaxy S10"&& a=="Vivo V15 Pro"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20vivov15.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+  		if(a=="Samsung Galaxy S10"&& b=="Samsung Galaxy A50"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20sam%20a50.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+  		if(b=="Samsung Galaxy S10" && a=="Samsung Galaxy A50"){
+  			$("#3").attr("href","file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10%20vs%20sam%20a50.html");
+  			$("#1").val("");
+  			$("#2").val("");
+  		}
+
+
+
+  	});
+  </script>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/jquery.zoom.min.js"></script>
+		<script src="js/main.js"></script>

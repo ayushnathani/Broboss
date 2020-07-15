@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
+  <link type="text/css" rel="stylesheet" href="stylee.css"/>
+
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+		
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+		
+		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+		
+		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+		
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+ 
+  top: 100%;
+  left: 26%;
+  right: 30%;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+.checked {
+  color: orange;
+}
+.fa-remove{
+	color:red;
+}
+</style>
+</head>
+<body style="margin-left: 60px;margin-right: 60px" >
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container" >
+	
+	<div class="navbar-header" >
+		<a class="navbar-brand" href="index.html" style="font-family: Chiller ; font-size: 30px "><b>BROBOSS</b></a><img src="G copy.png" style="width:50px"/></div>
+		<ul class="nav navbar-nav"><li><a >     	</a></li></ul>
+	<form class="navbar-form navbar-left" >
+		<div class="form-group" >
+			<input type="text" class="form-control" placeholder="Search..." style="width:500px" id="myInput" name="myCountry"/>
+		</div>
+
+		<button class="btn btn-default" ><span class="glyphicon glyphicon-search" ></span></button>
+	</form>
+	<ul class="nav navbar-nav navbar-right" >
+		<li><a href="#" data-toggle="modal" data-target="#modal-login1" ><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#modal-login"  ><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li></ul>
+</div>
+
+
+<script>
+function autocomplete(inp, arr) {
+ 
+  var currentFocus;
+
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+  
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+   
+      this.parentNode.appendChild(a);
+
+      for (i = 0; i < arr.length; i++) {
+  
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+
+          b = document.createElement("DIV");
+         
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+
+          b.addEventListener("click", function(e) {
+
+              inp.value = this.getElementsByTagName("input")[0].value;
+           
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+ 
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+      
+        currentFocus++;
+        
+        addActive(x);
+      } else if (e.keyCode == 38) { 
+        currentFocus--;
+      
+        addActive(x);
+      } else if (e.keyCode == 13) {
+    
+        e.preventDefault();
+        if (currentFocus > -1) {
+
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+
+    if (!x) return false;
+
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+
+var countries = ["Apple iphone 6","Apple iphone 6s","Iphone X","iphone XR","Iphone XS","Samsung Galaxy S10","Samsung Galaxy Note 9","Micromax Canvas 5","Huawei P20 lite","Huawei p30 pro","Realme 2","Realme 3","Realme 2 pro","Mi 6","Mi note 6","Redmi 5","Redmi 6 pro","Xiaomi Mi 8","Xiaomi X5","Oppo f9","oppo f11","oppo f3","oppo f7 ","Vivo V9","Vivo V3","Poco F1","Lenovo K5","Blackberry Evolve","Blackberry Z6","Nokia 6 ","Nokia 7.1 plus","Nokia 8.1","Apple iphone 8","Apple iphone 5s","Iphone 4","iphone 4s","Iphone 7S","Samsung Galaxy S8","Samsung Galaxy Note 8","Micromax Canvas 4","Huawei P20 ","Huawei p20 pro","Realme 2 pro","Realme c1","Realme 3 pro","Mi 5","Mi note 4","Redmi 5a","Redmi 5 pro","Xiaomi Mi 6","Xiaomi X3","Oppo f5","oppo f11 pro","oppo f3 pro","oppo f7 pro","Vivo V7","Vivo V5","Poco F1","Lenovo K8","Blackberry K1" ,"Blackberry Z2","Nokia 6.1 ","Nokia 5.1 plus","Nokia 8.1 plus"];
+
+
+autocomplete(document.getElementById("myInput"), countries);
+
+	
+</script>
+
+
+
+</nav>
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content" style="background-color: #3a3a3a;color:#888">
+        			
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" style="color: #fff">
+        					<span aria-hidden="true" >&times;</span><span class="sr-only">Close</span>
+        				</button>
+        				<h3 class="modal-title" id="modal-login-label">Login to our site</h3>
+        				<p>Enter your Email and password to log on:</p>
+        			</div>
+        			
+        			<div class="modal-body">
+        				
+	                    <form role="form" action="" method="post" class="login-form" ng-app="" name="myForm">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="form-username"style="border-color: #399599">Email</label>
+	                        	<input type="email" name="myaddress" ng-model="em" placeholder="Email..." class="form-username form-control" id="form-username" required><br>
+	                        	<span ng-show="myForm.myaddress.$error.email"><i class="fa fa-remove"></i>Please Enter a valid email address..</span> 
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-password">Password</label>
+	                        	<input type="password" name="userPassword" placeholder="Password..." class="form-password form-control" id="form-password" ng-model="n2" ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/"><br>
+	                        	<div ng-messages="myForm.userPassword.$error">
+	                        		
+	                        		<div style="color:orange" ng-show="!myForm.userPassword.$valid"><i class="fa fa-remove" ></i>Invalid Password</div>
+          </div>
+	            </div>            	
+	                        </div>
+	                        <button type="submit" class="btn form-control btn-success" ng-disabled="myForm.myaddress.$dirty && myForm.myaddress.$invalid ||  
+myForm.userPassword.$dirty && myForm.userPassword.$invalid"> Sign in!</button>
+	                    </form>
+	                    
+        			</div>
+        			
+        		</div>
+        	</div>
+        </div>
+        <div class="modal fade" id="modal-login1" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content" style="background-color: #3a3a3a;color:#888">
+        			
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" style="color: #fff">
+        					<span aria-hidden="true" >&times;</span><span class="sr-only">Close</span>
+        				</button>
+        				<h3 class="modal-title" id="modal-login-label">Create New Account</h3>
+        				<p>Create your username and password to create an account:</p>
+        			</div>
+        			
+        			<div class="modal-body">
+        				
+	                    <form role="form" action="" method="post" class="login-form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="form-username"style="border-color: #399599">Username</label>
+	                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-password">Password</label>
+	                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-password">Confirm Password</label>
+	                        	<input type="password" name="form-password" placeholder="Confirm Password..." class="form-password form-control" id="form-password">
+	                        </div>
+	                        <button type="submit" class="btn form-control btn-success" >Sign Up!</button>
+	                    </form>
+	                    
+        			</div>
+        			
+        		</div>
+        	</div>
+        </div>
+<div class="navbar1234" id="nav" >
+	<div class="container" >
+  <div class="dropdown111">
+    <button class="dropbtn">Mobiles and Tablets 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content111">
+<table width="102%">
+      <tr><td><a href="product.html"><b>Mobiles</b></a></td><td><a href="#"><b>Brands</b></a></td><td><a href="#"><b>Mobile accessories</b></a></td></tr>
+<tr><td><a href="product.html">Phone finder</a></td><td><a href="">Real Me</a></td><td><a href="">Memory cards</a></td></tr>
+<tr><td><a href="file:///C:/Users/Ayush%20Nathani/Desktop/broboss2/15000.html">Top 10 Mobiles</a></td><td><a href="">Xiaomi</a></td><td><a href="">Power banks</a></td></tr>
+<tr><td><a href="product.html">Best Mobiles</a></td><td><a href="">Samsung</a></td><td><a href="">Headphones</a></td></tr>
+<tr><td><a href="product.html">Latest Mobiles</a></td><td><a href="">Vivo</a></td><td><a href=""><b>Tablets</b></a></td></tr>
+<tr><td><a href="product.html">Upcoming Mobiles</a></td><td><a href="">Oppo</a></td><td><a href="">Tablet Finder</a></td></tr>
+<tr><td><a href="product.html">Mobiles Price List</a></td><td><a href="">Honor</a></td><td><a href="">Top 10 Tablets</a></td></tr>
+<tr><td><a href="product.html"><b>Price Range</b></a></td><td><a href=""><b>Feature</b></a></td><td><a href="">Best Tablets</a></td></tr>
+<tr><td><a href="product.html">All Prices</a></td><td><a href="">4g Volte</a></td><td><a href="">Best Tablets</a></td></tr>
+<tr><td><a href="product.html">Phone finder</a></td><td><a href="">Real Me</a></td><td><a href="">Memory cards</a></td></tr>
+<tr><td><a href="product.html">Under Rs. 5,000</a></td><td><a href="">3Gb Ram Phones</a></td><td><a href="">Under Rs. 5,000</a></td></tr>
+<tr><td><a href="product.html">Rs. 5,000-Rs 8,000</a></td><td><a href="">Best Battery Backup Phones</a></td><td><a href="">Rs. 5,000-Rs. 10,000</a></td></tr>
+<tr><td><a href="product.html">Rs. 8,000-Rs. 12,000</a></td><td><a href="">Dual Sim Mobiles</a></td><td><a href="">Above Rs. 10,000</a></td></tr>
+<tr><td><a href="product.html">Rs. 12,000-Rs. 18,000</a></td><td><a href="">Mid Size[4.2-5.2 inch]</a></td><td><a href="">&nbsp</a></td></tr>
+<tr><td><a href="product.html">Rs. 18,000-Rs. 25,000</a></td><td><a href="">Large size[5.2+ inch]</a></td><td><a href="">&nbsp</a></td></tr>
+<tr><td><a href="product.html">Above Rs 25,000</a></td><td><a href="">&nbsp</a></td><td><a href="">&nbsp</a></td></tr>
+</table>
+    </div>
+  </div>
+ <div class="dropdown1">
+  <button class="dropbtn1">Latest News
+  <i class="fa fa-caret-down"></i>
+  </button>
+   <div class="dropdown-content1">
+   <a href="#222">News and Reviews<br><br></a>
+   <a href="">Gadget Reviews<br><br></a>
+   <a href="#333">Best Deals<br><br></a>
+   <a href="">First Looks</a>
+   </div>
+ </div>
+
+ <div class="dropdown2">
+  <button class="dropbtn2">Top 10
+  <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content2">
+ <table width="102%">
+<tr><td><a href="product.html"><b>Top 10 Mobiles</b></a></td><td><a href=""><b>Top Mobiles by brand</b></a></td></tr>
+<tr><td><a href="product.html"><b>Top 10 Tablets</b></a></td><td><a href="">Samsung Mobiles</a></td></tr>
+<tr><td><a href="product.html"><b>Top 10 Laptops</b></a></td><td><a href="">Lenovo Mobiles</a></td></tr>
+<tr><td><a href="product.html"><b>Top 10 TV's</b></a></td><td><a href="">Motorola Mobiles</a></td></tr>
+<tr><td><a href="product.html"><b>Top 10 Camera</b></a></td><td><a href="">Xiaomi Mobiles</a></td></tr>
+<tr><td><a href="product.html"><b>Top 10 AC's</b></a></td><td><a href="">Oppo Mobiles</a></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><a href="product.html"><b>Top Mobiles by price</b></a></td><td><a href=""><b>Top Mobiles by Features</b></a></td></tr>
+<tr><td><a href="product.html">Best Phones under 5000</a></td><td><a href="">4g Mobiles</a></td></tr>
+<tr><td><a href="product.html">Best Phones under 10000</a></td><td><a href="">4gb ram Mobiles</a></td></tr>
+<tr><td><a href="product.html">Best Phones under 15000</a></td><td><a href="">Best Battery Life Phones</a></td></tr>
+<tr><td><a href="product.html">Best Phones under 20000</a></td><td><a href="">Mobiles with Fingerprint Scanner</a></td></tr>
+<tr><td><a href="product.html">Best Phones under 25000</a></td><td><a href="">Slimmest Phones</a></td></tr>
+</table> 
+  </div>
+</div>
+ <div class="dropdown2">
+  <button class="dropbtn2">Compare
+  <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content2">
+ <table>
+ <tr><td><a href="comp.html"><b>Compare Mobiles</b></a></td><td><a href=""><b>Top Mobiles Comparison</b></a></td></tr>
+ <tr><td><a href="comp.html"><b>Compare tablets</b></a></td><td><a href="file:///C:/Users/Ayush%20Nathani/Desktop/broboss2/compare1.html">Vivo V11 Pro VS Oppo f9 pro</a></td></tr>
+ <tr><td><a href="comp.html"><b>Compare Laptops</b></a></td><td><a href="file:///C:/Users/Ayush%20Nathani/Desktop/broboss2/compare2.html">Xiaomi brownmi Note 5 Pro Vs Xiaomi brownmi Note 6 Pro</a></td></tr>
+ <tr><td><a href="comp.html"><b>Compare TV's</b></a></td><td><a href="file:///C:/Users/Ayush%20Nathani/Desktop/broboss2/compare3.html">Xiaomi Mi A2 vs Xiaomi brownmi Note 5 Pro</a></td></tr>
+ <tr><td></td><td><a href="comp.html">Xiaomi brownmi  Note 5 Pro vs Real Me 2 Pro</a></td></tr>
+ <tr><td></td><td><a href="comp.html">One Plus 6 VS One Plus 6T </a></td></tr>
+ <tr><td></td><td><a href="comp.html">Honor 8x vs Real me 2 pro</a></td></tr>
+ <tr><td></td><td><a href="comp.html">Real me 2 vs Real me 2 pro</a></td></tr>
+ </table>
+ </div>
+</div>
+<a href="">Upcoming Mobiles</a>
+<a href="">Accessories</a>
+</div>
+</div>
+<div class="container-fluid">
+<div id="my" class="carousel slide" data-ride="carousel" style="width:100%">
+		<ol class="carousel-indicators" >
+			<li data-target="#my" data-slide-to="0" class="active" ></li>
+			<li data-target="#my" data-slide-to="1"></li>
+			<li data-target="#my" data-slide-to="2"></li>
+			<li data-target="#my" data-slide-to="3"></li>
+			<li data-target="#my" data-slide-to="4"></li>
+		</ol>
+
+		<div class="carousel-inner" >
+			<div class="item active" ><img src="c1.png" /></div>
+			<div class="item" ><img src="c2.png" /></div>
+			<div class="item" ><img src="c3.png" /></div>
+			<div class="item" ><img src="c4.png" /></div>
+			<div class="item" ><img src="c5.png" /></div>
+</div>
+			<a class="left carousel-control" href="#my" data-slide="prev" >
+				<span class="glyphicon glyphicon-chevron-left" ></span></a>
+
+				<a class="right carousel-control" href="#my" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" ></span></a>
+
+					
+					</div>
+				</div>
+				<br><br><br>
+<div class="container-fluid">
+				<div class="row">
+		<div class="col-sm-4" >
+	<div id="my4" class="carousel slide" data-ride="carousel" >
+		<ol class="carousel-indicators" >
+			<li data-target="#my4" data-slide-to="0" class="active" ></li>
+			<li data-target="#my4" data-slide-to="1"></li>
+			<li data-target="#my4" data-slide-to="2"></li>
+		</ol>
+
+		<div class="carousel-inner" >
+			<div class="item active" ><a href="cs.html"><img src="ca1.jpg" style="width:500px;height:250px"/></a></div>
+			<div class="item" ><a href="cs.html"><img src="ca2.jpeg" style="width:500px;height:250px"/></a></div>
+			<div class="item" ><a href="cs.html"><img src="ca3.jpg" style="width:500px;height:250px"/></a></div>
+        </div>
+			<a class="left carousel-control" href="#my4" data-slide="prev" >
+				<span class="glyphicon glyphicon-chevron-left" ></span></a>
+
+				<a class="right carousel-control" href="#my4" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" ></span></a>
+
+					</div>
+					<h3>Laptops</h3>
+				</div>
+			
+			<div class="col-sm-4" >
+	<div id="my1" class="carousel slide" data-ride="carousel" >
+		<ol class="carousel-indicators" >
+			<li data-target="#my" data-slide-to="0" class="active" ></li>
+			<li data-target="#my" data-slide-to="1"></li>
+			<li data-target="#my" data-slide-to="2"></li>
+		</ol>
+
+		<div class="carousel-inner" >
+			<div class="item active" ><a href="product.html"> <img src="cm1.jpg" style="width:500px;height:250px" /></a></div>
+			<div class="item" ><a href="product.html"> <img src="cm2.jpg" style="width:500px;height:250px"/></a></div>
+			<div class="item" ><a href="product.html"> <img src="cm3.jpg" style="width:500px;height:250px"/></a></div>
+</div>
+			<a class="left carousel-control" href="#my1" data-slide="prev" >
+				<span class="glyphicon glyphicon-chevron-left" ></span></a>
+
+				<a class="right carousel-control" href="#my1" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" ></span></a>
+
+					
+					</div>
+					<h3>Mobiles</h3>
+				</div>
+		
+			<div class="col-sm-4" >
+	<div id="my2" class="carousel slide" data-ride="carousel" >
+		<ol class="carousel-indicators" >
+			<li data-target="#my" data-slide-to="0" class="active" ></li>
+			<li data-target="#my" data-slide-to="1"></li>
+			<li data-target="#my" data-slide-to="2"></li>
+		</ol>
+
+		<div class="carousel-inner" >
+			<div class="item active" ><a href="cs.html"><img src="cc1.jpg" style="width:500px;height:250px"/></a></div>
+			<div class="item" ><a href="cs.html"><img src="cc2.jpg" style="width:500px;height:250px"/></a></div>
+			<div class="item" ><a href="cs.html"><img src="cc3.jpg" style="width:500px;height:250px"/></a></div>
+</div>
+			<a class="left carousel-control" href="#my2" data-slide="prev" >
+				<span class="glyphicon glyphicon-chevron-left" ></span></a>
+
+				<a class="right carousel-control" href="#my2" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" ></span></a>
+
+					
+					</div>
+					<h3>Cameras</h3>
+				</div>
+			</div>
+		</div>
+		<hr>
+
+		<div class="section">
+			<!-- container -->
+			<div class="container-fluid">
+				<!-- row -->
+				<div class="row">
+
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2 class="title">Top selling</h2>
+							
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab2" class="tab-pane fade in active">
+									<div class="products-slick" data-nav="#slick-nav-2">
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<img src="ts1.jpeg" alt="" style="margin-top: 30px">
+												
+											</div>
+											<div class="product-body">
+												<p class="product-category">Laptop</p>
+												<h3 class="product-name"><a href="cs.html">MSI GL Series Core i5 8th Gen - (8 GB/1 TB HDD/Windows 10 Home/4 GB Graphics) GL63 8RC Gaming Laptop  (15.6 inch, Black, 2.2 kg)</a></h3>
+												<h4 class="product-price">Rs. 60,990 <del class="product-old-price">Rs. 74,990</del></h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Add to compare</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"> View</span></button>
+												</div>
+											</div>
+											
+										</div>
+										<!-- /product -->
+
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<center><a href="loading.html"><img src="ts2.jpeg" alt="" style="height:220px;width:100px;margin-top: 30px"></a></center>
+												
+											</div>
+											<div class="product-body">
+												<p class="product-category">Mobiles</p>
+												<h3 class="product-name"><a href="loading.html">Samsung Galaxy S10 (Prism Black, 128 GB)  (8 GB RAM)</a></h3>
+												<h4 class="product-price">Rs. 66,990<del class="product-old-price">Rs.71,000</del></h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star-o"></i>
+												</div>
+												<div class="product-btns">
+													
+													<button class="add-to-compare" onclick="window.open('sam s10.html')"><i class="fa fa-exchange"></i><span class="tooltipp">Add to compare</span></button>
+													
+													<button class="quick-view" data-toggle="modal" data-target="#my123"><i class="fa fa-eye"></i><span class="tooltipp"> View</span></button>
+												</div>
+												
+											</div>
+											
+										</div>
+										<!-- /product -->
+				
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<img src="ts3.jpeg" alt="" style="margin-top: 30px">
+												
+											</div>
+											<div class="product-body">
+												<p class="product-category">Laptop</p>
+												<h3 class="product-name"><a href="cs.html">Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466  (13.3 inch, Silver, 1.35 kg)</a></h3>
+												<h4 class="product-price">Rs. 73,990<del class="product-old-price">Rs. 84,990</del></h4>
+												<div class="product-rating">
+												</div>
+												<div class="product-btns">
+													
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">View</span></button>
+												</div>
+											</div>
+											
+										</div>
+										<!-- /product -->
+
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<center><img src="ts4.jpeg" alt="" style="height:220px;margin-top: 10px;width:260px;"></center>
+											</div>
+											<div class="product-body">
+												<p class="product-category">Camera</p>
+												<h3 class="product-name"><a href="cs.html">Canon EOS 1300D DSLR Camera Body with Single Lens: EF-S 18-55 IS II (16 GB SD Card + Carry Case)  (Black)</a></h3>
+												<h4 class="product-price">Rs.24,990 <del class="product-old-price">Rs. 31,995</del></h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">View</span></button>
+												</div>
+											</div>
+											
+										</div>
+										<!-- /product -->
+
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<center><img src="ts5.jpeg" alt="" style="height:220px;width:110px;margin-top: 30px"></center>
+											</div>
+											<div class="product-body">
+												<p class="product-category">Mobiles</p>
+												<h3 class="product-name"><a href="cs.html">Apple iPhone XS Max (Gold, 512 GB)</a></h3>
+												<h4 class="product-price">Rs. 1,32,000</h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													
+													<button class="add-to-compare" onclick="window.open('ip xs.html')"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">View</span></button>
+												</div>
+											</div>
+											
+										</div>
+										<!-- /product -->
+									</div>
+									<div id="slick-nav-2" class="products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- /Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<div id="my123" class="modal fade" role="dialog" style="margin-top:100px">
+		<div class="modal-dialog">
+		<div class="modal-content" style="width:90%">
+			<div class="modal-header" >
+				<button class="close" data-dismiss="modal" >&times;</button>
+				<center><img src="lm2.jpeg" style="width:20%" /></center>
+			</div>
+			<div class="modal-body" >
+				<h4 class="product-category">Mobiles</h4>
+				<h2 class="product-name"><a href="s10.html">Samsung Galaxy S10 (Prism Black, 128 GB)  (8 GB RAM)</a></h2>
+				<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>  5
+<h2>Rs 66,990</h2>
+			</div>
+			<div class="modal-footer" >
+			<center><button class="btn btn-warning" ><a href="s10.html">View product details</a></button></center>
+		</div>
+		</div>
+	</div>
+	</div>
+	
+		<!-- /SECTION -->
+		<hr>
+<div class="container-fluid" >
+	<div class="row">
+		<div class="col-sm-4" >
+			<img src="ad2.png" style="width:100%"/></div>
+			<div class="col-sm-4" />
+			<img src="ad3.png" style="width:100%"/></div>
+			<div class="col-sm-4" >
+			<img src="ad7.png" style="width:100%"/></div>
+		</div>
+	</div>
+	<hr>
+	<div class="section">
+			<!-- container -->
+			<div class="container-fluid">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2 class="title">Latest Mobiles</h2>
+						</div>
+					</div>
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<center><img src="lm1.jpeg" alt="" style="height:220px;width:100px;margin-top: 30px"></center>
+								<div class="product-label">
+									
+								</div>
+							</div>
+							<div class="product-body">
+							
+								<h3 class="product-name"><a href="cs.html">Redmi Note 7 Pro (Space Black, 64 GB)  (4 GB RAM)</a></h3>
+								<h4 class="product-price">Rs. 13,999 <del class="product-old-price">Rs. 15,999</del></h4>
+								<div class="product-rating">
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare" onclick="window.open('file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/red%20n7.html')"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<center><img src="lm2.jpeg" alt="" style="height:220px;width:100px;margin-top: 30px"></center>
+								<div class="product-label">
+									
+								</div>
+							</div>
+							<div class="product-body">
+								<h3 class="product-name"><a href="cs.html">Samsung Galaxy S10 (Prism Black, 128 GB)  (8 GB RAM)</a></h3>
+								<h4 class="product-price">Rs.66,990 <del class="product-old-price">Rs.71,000</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare" onclick="window.open('file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20s10.html')"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<div class="clearfix visible-sm visible-xs"></div>
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<center><img src="lm3.jpeg" alt="" style="height:220px;width:100px;margin-top: 30px"></center>
+							</div>
+							<div class="product-body">
+								
+								<h3 class="product-name"><a href="cs.html">Vivo V15 Pro (Topaz Blue, 128 GB)  (6 GB RAM)</a></h3>
+								<h4 class="product-price">Rs.28,990<del class="product-old-price">Rs.32,990</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o"></i>
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare" onclick="window.open('file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/vivo%20v15.html')"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<center><img src="lm4.jpeg" alt="" style="height:220px;width:100px;margin-top: 30px"></center>
+							</div>
+							<div class="product-body">
+								
+								<h3 class="product-name"><a href="cs.html">Samsung Galaxy A50 (White, 64 GB)  (6 GB RAM)</a></h3>
+								<h4 class="product-price">Rs. 22,990<del class="product-old-price">Rs. 26,000</del></h4>
+								<div class="product-rating">
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare" onclick="window.open('file:///C:/Users/Ayush%20Nathani/Desktop/New%20folder/sam%20a50.html')"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<hr>
+
+		
+		<div class="section">
+			<!-- container -->
+			<div class="container-fluid">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2 class="title">Gaming Laptops</h2>
+						</div>
+					</div>
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="gl1.jpeg" alt="" style="margin-top: 30px">
+								<div class="product-label">
+									
+								</div>
+							</div>
+							<div class="product-body">
+							
+								<h3 class="product-name"><a href="cs.html">Acer Predator Helios 300 Core i5 8th Gen - (8 GB/1 TB HDD/128 GB SSD/Windows 10 Home/4 GB Graphics) PH315-51 / PH315-51-51V7 Gaming Laptop  (15.6 inch, Shale Black, 2.5 kg)</a></h3>
+								<h4 class="product-price">Rs. 71,990 <del class="product-old-price">Rs. 1,04,000</del></h4>
+								<div class="product-rating">
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="gl2.jpeg" alt="" style="margin-top: 30px">
+								<div class="product-label">
+									
+								</div>
+							</div>
+							<div class="product-body">
+								<h3 class="product-name"><a href="cs.html">HP Pavilion 15 Core i7 8th Gen - (8 GB/1 TB HDD/128 GB SSD/Windows 10 Home/4 GB Graphics) 15-BC408TX Gaming Laptop  (15.6 inch, Shadow Black, 2.3 kg)</a></h3>
+								<h4 class="product-price">Rs.79,990 <del class="product-old-price">Rs.93,000</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<div class="clearfix visible-sm visible-xs"></div>
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="gl3.jpeg" alt="" style="margin-top: 30px">
+							</div>
+							<div class="product-body">
+								
+								<h3 class="product-name"><a href="cs.html">Dell G3 Series Core i5 8th Gen - (8 GB/1 TB HDD/128 GB SSD/Windows 10 Home/4 GB Graphics) 3579 Gaming Laptop  (15.6 inch, Licorice Black, 2.53 kg, With MS Office)</a></h3>
+								<h4 class="product-price">Rs.75,990<del class="product-old-price">Rs.84,990</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o"></i>
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+					<!-- product -->
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="gl4.jpeg" alt="" style="margin-top: 30px">
+							</div>
+							<div class="product-body">
+								
+								<h3 class="product-name"><a href="cs.html">Asus VivoBook Ryzen 5 Quad Core - (8 GB/1 TB HDD/Windows 10 Home) X505ZA-EJ509TX505Z Thin and Light Laptop  (15.6 inch, Gold Metal)</a></h3>
+								<h4 class="product-price">Rs. 35,990<del class="product-old-price">Rs. 44,000</del></h4>
+								<div class="product-rating">
+								</div>
+								<div class="product-btns">
+									
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /product -->
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+
+		<div class="container-fluid" >
+	<div class="row">
+		<div class="col-sm-4" >
+			<img src="ad4.png" style="width:100%"/></div>
+			<div class="col-sm-4" />
+			<img src="ad5.png" style="width:100%"/></div>
+			<div class="col-sm-4" >
+			<img src="ad6.png" style="width:100%"/></div>
+		</div>
+	</div>
+	<hr>
+	<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Broboss is a gadget-research website that helps user to choose best device for himself...</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>broboss@broboss.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="about.html">About Us</a></li>
+									<li><a href="contact.html">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							
+
+
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>	
+
+
+	
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/jquery.zoom.min.js"></script>
+		<script src="js/main.js"></script>
+	
+	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">var scrolltotop={setting:{startline:100,scrollto:0,scrollduration:1e3,fadeduration:[500,100]},controlHTML:'<img src="up1.jpg" style="width:60px" />',controlattrs:{offsetx:5,offsety:5},anchorkeyword:"#top",state:{isvisible:!1,shouldvisible:!1},scrollup:function(){this.cssfixedsupport||this.$control.css({opacity:0});var t=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);t="string"==typeof t&&1==jQuery("#"+t).length?jQuery("#"+t).offset().top:0,this.$body.animate({scrollTop:t},this.setting.scrollduration)},keepfixed:function(){var t=jQuery(window),o=t.scrollLeft()+t.width()-this.$control.width()-this.controlattrs.offsetx,s=t.scrollTop()+t.height()-this.$control.height()-this.controlattrs.offsety;this.$control.css({left:o+"px",top:s+"px"})},togglecontrol:function(){var t=jQuery(window).scrollTop();this.cssfixedsupport||this.keepfixed(),this.state.shouldvisible=t>=this.setting.startline?!0:!1,this.state.shouldvisible&&!this.state.isvisible?(this.$control.stop().animate({opacity:1},this.setting.fadeduration[0]),this.state.isvisible=!0):0==this.state.shouldvisible&&this.state.isvisible&&(this.$control.stop().animate({opacity:0},this.setting.fadeduration[1]),this.state.isvisible=!1)},init:function(){jQuery(document).ready(function(t){var o=scrolltotop,s=document.all;o.cssfixedsupport=!s||s&&"CSS1Compat"==document.compatMode&&window.XMLHttpRequest,o.$body=t(window.opera?"CSS1Compat"==document.compatMode?"html":"body":"html,body"),o.$control=t('<div id="topcontrol">'+o.controlHTML+"</div>").css({position:o.cssfixedsupport?"fixed":"absolute",bottom:o.controlattrs.offsety,right:o.controlattrs.offsetx,opacity:0,cursor:"pointer"}).attr({title:"Scroll to Top"}).click(function(){return o.scrollup(),!1}).appendTo("body"),document.all&&!window.XMLHttpRequest&&""!=o.$control.text()&&o.$control.css({width:o.$control.width()}),o.togglecontrol(),t('a[href="'+o.anchorkeyword+'"]').click(function(){return o.scrollup(),!1}),t(window).bind("scroll resize",function(t){o.togglecontrol()})})}};scrolltotop.init();</script>
+<noscript>Not seeing a <a href="https://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
+
+
+
+</body>
+</html>
